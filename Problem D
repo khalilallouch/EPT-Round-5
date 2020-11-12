@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+#define N 1000000007;
+
+using namespace std;
+
+int main()
+{
+ ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+ int t;
+ cin>>t;
+ while(t--)
+ {
+     int n;
+     cin>>n;
+     int a[n];
+     for(int i=0;i<n;i++)
+        cin>>a[i];
+     map<int,int>d;
+     map<int,int>::iterator itr;
+     int nb=0;
+     for(int i=0;i<n;i++)
+     {
+         if (d[a[i]]==0)
+         {
+            nb++;
+            d[a[i]]++;
+         }
+         else
+            d[a[i]]++;
+     }
+     int maxi=0;
+
+     for(itr=d.begin();itr!=d.end();itr++)
+        maxi=max(maxi,itr->second);
+     if (maxi==1)
+        cout<<min(maxi,nb-1)<<endl;
+     else if (maxi>nb)
+        cout<<nb<<endl;
+     else if (maxi<nb)
+        cout<<maxi<<endl;
+     else
+        cout<<maxi-1<<endl;
+
+
+    }
+ return(0);
+}
